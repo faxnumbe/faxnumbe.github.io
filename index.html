@@ -35,27 +35,27 @@
         h1 {
             font-size: 3rem;
             text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         .creature-gif {
             display: block;
             margin: 0 auto;
-            width: 450px; /* Made it even larger for you */
+            width: 500px; /* Large size */
             max-width: 90vw;
-            image-rendering: pixelated;
-            filter: drop-shadow(0 0 15px rgba(51, 255, 0, 0.4));
+            image-rendering: pixelated; /* Keeps it sharp */
+            filter: drop-shadow(0 0 20px rgba(51, 255, 0, 0.3));
         }
 
         .subtitle {
             color: var(--accent-color);
-            margin-top: 30px;
-            line-height: 1.5;
+            margin-top: 40px;
+            line-height: 1.8;
             font-size: 0.8rem;
         }
 
         .blink {
-            animation: blinker 1s linear infinite;
+            animation: blinker 1.5s linear infinite;
         }
 
         @keyframes blinker {
@@ -68,7 +68,7 @@
     <div class="container">
         <h1>CAN IT BE?</h1>
         
-        <img id="creature" src="index.gif" alt="Unknown Entity" class="creature-gif">
+        <img src="index.gif" alt="Creature" class="creature-gif">
 
         <p class="subtitle">
             A NEW WORLD IS HATCHING.<br>
@@ -76,15 +76,6 @@
             [ <span class="blink">CONNECTING TO SERVER...</span> ]
         </p>
     </div>
-
-    <script>
-        window.onload = function() {
-            var img = document.getElementById('creature');
-            var src = img.src;
-            img.src = ''; 
-            img.src = src + '?t=' + new Date().getTime();
-        };
-    </script>
 
 </body>
 </html>
