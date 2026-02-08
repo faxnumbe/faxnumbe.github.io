@@ -30,75 +30,21 @@
         .container {
             max-width: 800px;
             padding: 20px;
-            position: relative;
         }
 
-        /* Glitch Title Effect */
         h1 {
             font-size: 3rem;
-            position: relative;
             text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
-            animation: text-glitch 1s infinite alternate;
             margin-bottom: 20px;
         }
 
-        @keyframes text-glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-
-        /* --- NEW CREATURE ANIMATION CSS --- */
-        
-        /* 1. The Wrapper: Handles the floating motion */
-        .glitch-wrapper {
-            display: inline-block;
-            margin: 0 auto;
-            animation: float 4s ease-in-out infinite;
-            position: relative;
-        }
-
-        /* 2. The Image: Handles the glitch/distortion */
         .creature-gif {
-            width: 350px; 
-            max-width: 90vw;
             display: block;
+            margin: 0 auto;
+            width: 450px; /* Made it even larger for you */
+            max-width: 90vw;
             image-rendering: pixelated;
-            
-            /* Base Glow */
             filter: drop-shadow(0 0 15px rgba(51, 255, 0, 0.4));
-            
-            /* The Glitch Animation */
-            animation: hologram-instability 2.5s infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes hologram-instability {
-            0% { opacity: 1; transform: skewX(0deg); filter: drop-shadow(0 0 15px rgba(51, 255, 0, 0.4)) hue-rotate(0deg); }
-            
-            /* Random twitch */
-            5% { transform: skewX(2deg) translateX(2px); }
-            6% { transform: skewX(0deg) translateX(0px); }
-            
-            /* Flicker dim */
-            25% { opacity: 0.8; }
-            26% { opacity: 1; }
-            
-            /* Major Glitch */
-            50% { transform: skewX(-5deg) scaleY(1.02); filter: drop-shadow(4px 0 15px rgba(255, 0, 221, 0.6)) hue-rotate(90deg); }
-            51% { transform: skewX(0deg) scaleY(1); filter: drop-shadow(0 0 15px rgba(51, 255, 0, 0.4)) hue-rotate(0deg); }
-            
-            /* Random twitch */
-            80% { transform: skewX(2deg) translateX(-2px); }
-            81% { transform: skewX(0deg) translateX(0px); }
         }
 
         .subtitle {
@@ -106,48 +52,6 @@
             margin-top: 30px;
             line-height: 1.5;
             font-size: 0.8rem;
-            opacity: 0;
-            animation: fadeIn 3s forwards 1s;
-        }
-
-        .signup {
-            margin-top: 40px;
-            opacity: 0;
-            animation: fadeIn 3s forwards 2.5s;
-        }
-
-        input[type="email"] {
-            background: transparent;
-            border: 2px solid var(--text-color);
-            color: white;
-            padding: 10px;
-            font-family: 'Press Start 2P', monospace;
-            width: 250px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        input[type="email"]:focus {
-            outline: none;
-            background-color: #111;
-        }
-
-        button {
-            background-color: var(--text-color);
-            color: black;
-            border: none;
-            padding: 12px 20px;
-            font-family: 'Press Start 2P', monospace;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
         }
 
         .blink {
@@ -164,24 +68,23 @@
     <div class="container">
         <h1>CAN IT BE?</h1>
         
-        <div class="glitch-wrapper">
-            <img src="index.gif" alt="Unknown Entity" class="creature-gif">
-        </div>
+        <img id="creature" src="index.gif" alt="Unknown Entity" class="creature-gif">
 
         <p class="subtitle">
             A NEW WORLD IS HATCHING.<br>
             COLLECT. EVOLVE. SURVIVE.<br><br>
             [ <span class="blink">CONNECTING TO SERVER...</span> ]
         </p>
-
-        <div class="signup">
-            <form action="#" method="get">
-                <input type="email" placeholder="ENTER EMAIL" required>
-                <br>
-                <button type="submit">NOTIFY ME</button>
-            </form>
-        </div>
     </div>
+
+    <script>
+        window.onload = function() {
+            var img = document.getElementById('creature');
+            var src = img.src;
+            img.src = ''; 
+            img.src = src + '?t=' + new Date().getTime();
+        };
+    </script>
 
 </body>
 </html>
