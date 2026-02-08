@@ -28,7 +28,7 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 800px;
             padding: 20px;
             position: relative;
         }
@@ -39,6 +39,7 @@
             position: relative;
             text-shadow: 2px 2px #ff00de, -2px -2px #00ffff;
             animation: glitch 1s infinite alternate;
+            margin-bottom: 20px;
         }
 
         @keyframes glitch {
@@ -50,34 +51,37 @@
             100% { transform: translate(0); }
         }
 
+        /* GIF Styling */
+        .creature-gif {
+            display: block;
+            margin: 0 auto;
+            width: 350px; /* Much larger size */
+            max-width: 90vw; /* Ensures it fits on mobile screens */
+            image-rendering: pixelated; /* Keeps pixel art crisp */
+            
+            /* Adds a mysterious green glow around the non-transparent pixels */
+            filter: drop-shadow(0 0 15px rgba(51, 255, 0, 0.4)); 
+            
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
         .subtitle {
             color: var(--accent-color);
-            margin-top: 20px;
+            margin-top: 30px;
             line-height: 1.5;
             font-size: 0.8rem;
             opacity: 0;
             animation: fadeIn 3s forwards 1s;
         }
 
-        .creature-silhouette {
-            margin: 40px auto;
-            width: 100px;
-            height: 100px;
-            background-color: #222;
-            image-rendering: pixelated;
-            box-shadow: 0 0 15px var(--text-color);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px var(--text-color); }
-            50% { box-shadow: 0 0 25px var(--text-color); opacity: 0.8;}
-            100% { box-shadow: 0 0 10px var(--text-color); }
-        }
-
-        /* Simple form styling */
         .signup {
-            margin-top: 50px;
+            margin-top: 40px;
             opacity: 0;
             animation: fadeIn 3s forwards 2.5s;
         }
@@ -88,8 +92,9 @@
             color: white;
             padding: 10px;
             font-family: 'Press Start 2P', monospace;
-            width: 200px;
+            width: 250px;
             text-align: center;
+            margin-bottom: 10px;
         }
 
         input[type="email"]:focus {
@@ -104,7 +109,6 @@
             padding: 12px 20px;
             font-family: 'Press Start 2P', monospace;
             cursor: pointer;
-            margin-top: 10px;
             transition: transform 0.1s;
         }
 
@@ -130,7 +134,7 @@
     <div class="container">
         <h1>CAN IT BE?</h1>
         
-        <div class="creature-silhouette"></div>
+        <img src="index.gif" alt="Unknown Entity" class="creature-gif">
 
         <p class="subtitle">
             A NEW WORLD IS HATCHING.<br>
